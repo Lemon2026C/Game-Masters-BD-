@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet & Deposit - Game Masters BD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4 shadow-md flex justify-between items-center">
+        <h1 class="text-xl font-bold text-yellow-400">Game Masters BD - Wallet</h1>
+        <a href="index.html" class="bg-blue-600 px-4 py-2 rounded text-sm hover:bg-blue-700">Home</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-xl mx-auto p-6 mt-10 bg-gray-800 rounded-lg shadow-lg">
+        
+        <!-- User Balance Section -->
+        <div class="bg-gray-700 p-4 rounded-lg mb-6 text-center">
+            <h2 class="text-gray-400 text-sm">Current Balance</h2>
+            <p id="userBalance" class="text-3xl font-bold text-green-400">৳ 0.00</p>
+        </div>
+
+        <!-- Deposit Form -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3 text-yellow-300">Add Money (Deposit via bKash/Nagad)</h3>
+            <form id="depositForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Method</label>
+                    <select id="depositMethod" class="w-full p-2 bg-gray-750 border border-gray-600 rounded bg-gray-700 text-white">
+                        <option value="bKash">bKash (Personal: 01XXXXXXXXX)</option>
+                        <option value="Nagad">Nagad (Personal: 01XXXXXXXXX)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Amount (BDT)</label>
+                    <input type="number" id="depositAmount" placeholder="Enter amount" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Transaction ID (TrxID)</label>
+                    <input type="text" id="trxId" placeholder="Enter TrxID" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white">
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 p-2 rounded font-bold">Submit Deposit Request</button>
+            </form>
+        </div>
+
+        <!-- Withdraw Form -->
+        <div>
+            <h3 class="text-lg font-semibold mb-3 text-yellow-300">Withdraw Request</h3>
+            <form id="withdrawForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Amount (BDT)</label>
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Your bKash/Nagad Number</label>
+                    <input type="text" id="withdrawNumber" placeholder="01XXXXXXXXX" required class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white">
+                </div>
+                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 p-2 rounded font-bold">Request Withdrawal</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for Handling Form -->
+    <script>
+        document.getElementById('depositForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('depositAmount').value;
+            const trx = document.getElementById('trxId').value;
+            alert(`Deposit request of ৳${amount} with TrxID (${trx}) submitted successfully! Wait for admin approval.`);
+            document.getElementById('depositForm').reset();
+        });
+
+        document.getElementById('withdrawForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('withdrawAmount').value;
+            alert(`Withdrawal request of ৳${amount} submitted successfully!`);
+            document.getElementById('withdrawForm').reset();
+        });
+    </script>
+
+</body>
+</html>
